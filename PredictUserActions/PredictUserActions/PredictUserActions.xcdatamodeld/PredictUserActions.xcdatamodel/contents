@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="ActionData" syncable="YES">
+        <attribute name="accx" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="accy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="accz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="activity_desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movement_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pitch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roll" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="yaw" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ActionData" positionX="-63" positionY="-18" width="128" height="165"/>
+    </elements>
+</model>
