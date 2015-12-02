@@ -12,8 +12,12 @@
 @property (strong, nonatomic) NSArray *duration;
 @property (strong, nonatomic) NSArray *rate;
 
+// Set outlets for user input fields
 @property (strong, nonatomic) IBOutlet UITextField *activityDesc;
-- (IBAction)pushToActionData:(id)sender;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker2;
+
+// Trigger action when user presses Start
+- (IBAction)pushToActionData:(id)sender;
+
 @end

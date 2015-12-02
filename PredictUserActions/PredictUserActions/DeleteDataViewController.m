@@ -34,6 +34,8 @@
 }
 
 - (IBAction)deleteAction:(id)sender {
+    // Delete data for specific action
+    
     NSMutableArray *dataToRemove = [[NSMutableArray alloc] initWithCapacity:0];
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ActionData"];
@@ -55,6 +57,8 @@
 }
 
 - (IBAction)deleteAllActions:(id)sender {
+    // Delete all action data
+    
     NSMutableArray *dataToRemove = [[NSMutableArray alloc] initWithCapacity:0];
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ActionData"];

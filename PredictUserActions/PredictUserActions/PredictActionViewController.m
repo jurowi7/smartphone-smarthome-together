@@ -37,6 +37,8 @@ double curRoll;
         NSLog(@"Fetch error: %@", error);
         abort();
     }
+    
+    // Make sure that there is data to compare against
     if ([results count] == 0) {
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"No Data to Compare"
@@ -56,7 +58,7 @@ double curRoll;
         
         [self presentViewController:alert animated:YES completion:nil];
     } else {
-    
+        // If data exists, start gathering accelerometer data
         self.motionManager = [[CMMotionManager alloc] init];
         self.motionManager.accelerometerUpdateInterval = 0.1;
         
@@ -83,7 +85,6 @@ double curRoll;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
@@ -101,12 +102,13 @@ double curRoll;
     curAccY = acceleration.y;
     curAccZ = acceleration.z;
     
+    // Output accelerometer data to screen
     self.accX = [NSString stringWithFormat:@" %.2fg",curAccX];
     self.accY = [NSString stringWithFormat:@" %.2fg",curAccY];
     self.accZ = [NSString stringWithFormat:@" %.2fg",curAccZ];
     
+    // Start collection motion data (yaw, pitch, roll)
     motionManager.deviceMotionUpdateInterval = 0.1;
-    
     [motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
                                        withHandler:^(CMDeviceMotion * attitudeData, NSError *error) {
                                            [self outputAttitudeData:attitudeData.attitude];
@@ -125,14 +127,19 @@ double curRoll;
     curPitch = motionManager.deviceMotion.attitude.pitch*180/M_PI;
     curRoll = motionManager.deviceMotion.attitude.roll*180/M_PI;
     
+    // Display motion data on screen
     self.angRoll = [NSString stringWithFormat:@"%.2f",curYaw];
     self.angPitch = [NSString stringWithFormat:@"%.2f",curPitch];
     self.angYaw = [NSString stringWithFormat:@"%.2f",curRoll];
     
+    // Create array of current accelerometer and motion data to compare against data stored in Core Data
     NSMutableArray *curAction = [[NSMutableArray alloc] initWithObjects: self.angYaw, self.angPitch, self.angRoll, self.accX, self.accY, self.accZ, nil];
     
+    // Get the 3 closest matches from Core Data and find the action that is the most likely match
     neighbors = [self getNearestNeighbors:curAction];
     result = [self getResponse:neighbors];
+    
+    // Display the predicted action
     self.predictedAction.text = [NSString stringWithFormat:@"%@",result];
     [self.predictedAction setNeedsDisplay];
 }
@@ -146,27 +153,18 @@ double curRoll;
     
     actionData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     if ([actionData count] > 0) {
-        
+        // Loop through Core Data that has all the recorded actions stored
         for(NSManagedObject *managedObject in actionData){
             NSMutableArray *curDataRow = [[NSMutableArray alloc] initWithObjects:[managedObject valueForKey:@"yaw"], [managedObject valueForKey:@"pitch"], [managedObject valueForKey:@"roll"], [managedObject valueForKey:@"accx"], [managedObject valueForKey:@"accy"], [managedObject valueForKey:@"accz"], [managedObject valueForKey:@"activity_desc"], nil];
             
+            // Find the Euclidean Distance of the current accelerometer and motion data compared to
+            // each line of action data stored in Core Data
             double distance = [self getEuclideanDistance:curAction :curDataRow];
-
             NSMutableArray *distances = [[NSMutableArray alloc] initWithCapacity:0];
             [distances addObject:curDataRow];
             [distances addObject:[NSNumber numberWithDouble:distance]];
-            
             [distancesArray addObject:distances];
-            
-            //NSLog(@"%@, %@, %@, %@, %@, %@, %@, %f",[managedObject valueForKey:@"yaw"],[managedObject valueForKey:@"pitch"],[managedObject valueForKey:@"roll"],[managedObject valueForKey:@"accx"],[managedObject valueForKey:@"accy"],[managedObject valueForKey:@"accz"],[managedObject valueForKey:@"activity_desc"],distance);
-            
         }
-        
-        /*
-         for(NSArray *subArray in distancesSorted) {
-            NSLog(@"%@",subArray);
-        }
-         */
         
         NSArray *distancesSorted = [distancesArray sortedArrayUsingComparator:^(id a, id b) {
             NSNumber *numA = [a objectAtIndex:1];
@@ -180,6 +178,7 @@ double curRoll;
             [finalDistanceArray removeLastObject];
         }
         
+        // Find the 3 closest matches and put them into an array
         neighborArray = [finalDistanceArray subarrayWithRange:NSMakeRange(0,3)];
     }
     
@@ -195,6 +194,7 @@ double curRoll;
 }
 
 -(NSString*)getResponse:(NSArray *)neighbors {
+    // Find which of the 3 closest matches is the most likely match
     NSMutableArray *votes = [[NSMutableArray alloc] init];
     NSDictionary *dict = [[NSDictionary alloc] init];
     BOOL found = NO;
@@ -220,11 +220,7 @@ double curRoll;
               [NSNumber numberWithInt: 1], @"voteCount",
               nil]];
         }
-        
-        
-        //NSLog(@"%@",[subArray lastObject]);
     }
-    
     
     __block NSString *highKey;
     __block NSNumber *highVal;
@@ -237,13 +233,9 @@ double curRoll;
         }
     }];
     
-    //NSLog(@"key: %@, val: %@", highKey, highVal);
-    
-    
     NSString *result = [NSString stringWithFormat:@"%@", highVal];
     return result;
 }
-
 
 - (IBAction)backToHome:(id)sender {
     [self.motionManager stopAccelerometerUpdates];

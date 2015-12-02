@@ -11,11 +11,12 @@
 
 @interface ActionDataViewController : UIViewController
 
+// Capture motion data from phone
 @property (strong, nonatomic) CMAttitude* referenceAttitude;
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
+// Display data on the screen in the assigned labels
 @property (strong, nonatomic) IBOutlet UILabel *actionName;
-
 @property (strong, nonatomic) IBOutlet UILabel *accX;
 @property (strong, nonatomic) IBOutlet UILabel *accY;
 @property (strong, nonatomic) IBOutlet UILabel *accZ;

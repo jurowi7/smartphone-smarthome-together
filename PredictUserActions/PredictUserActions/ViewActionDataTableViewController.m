@@ -24,7 +24,7 @@
 {
     [super viewDidAppear:animated];
     
-    // Fetch the devices from persistent data store
+    // Fetch the action data from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ActionData"];
     self.actionData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
@@ -34,7 +34,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -47,8 +46,6 @@
     return context;
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -57,18 +54,17 @@
     return self.actionData.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    // Display data stored in Core Data
     NSManagedObject *actions = [self.actionData objectAtIndex:indexPath.row];
     [cell.textLabel setText:[actions valueForKey:@"activity_desc"]];
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@", [actions valueForKey:@"movement_time"], [actions valueForKey:@"accx"], [actions valueForKey:@"accy"], [actions valueForKey:@"accz"], [actions valueForKey:@"yaw"], [actions valueForKey:@"pitch"], [actions valueForKey:@"roll"]]];
     
     return cell;
 }
-
 
 @end

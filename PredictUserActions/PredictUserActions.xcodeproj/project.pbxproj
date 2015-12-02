@@ -12,8 +12,6 @@
 		D0E3D0131BED661B007FDF76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E3D0111BED661B007FDF76 /* Main.storyboard */; };
 		D0E3D0161BED661B007FDF76 /* PredictUserActions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0E3D0141BED661B007FDF76 /* PredictUserActions.xcdatamodeld */; };
 		D0E3D0181BED661B007FDF76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E3D0171BED661B007FDF76 /* Assets.xcassets */; };
-		D0E3D0261BED661B007FDF76 /* PredictUserActionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3D0251BED661B007FDF76 /* PredictUserActionsTests.m */; };
-		D0E3D0311BED661B007FDF76 /* PredictUserActionsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3D0301BED661B007FDF76 /* PredictUserActionsUITests.m */; };
 		D0E3D0401BF14C87007FDF76 /* ActionNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3D03F1BF14C87007FDF76 /* ActionNameViewController.m */; };
 		D0E3D0431BF14E32007FDF76 /* ActionDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3D0421BF14E32007FDF76 /* ActionDataViewController.m */; };
 		D0E3D0451BF1569F007FDF76 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E3D0441BF1569F007FDF76 /* CoreMotion.framework */; };
@@ -51,11 +49,7 @@
 		D0E3D0171BED661B007FDF76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0E3D01C1BED661B007FDF76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E3D0211BED661B007FDF76 /* PredictUserActionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PredictUserActionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0E3D0251BED661B007FDF76 /* PredictUserActionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PredictUserActionsTests.m; sourceTree = "<group>"; };
-		D0E3D0271BED661B007FDF76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E3D02C1BED661B007FDF76 /* PredictUserActionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PredictUserActionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0E3D0301BED661B007FDF76 /* PredictUserActionsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PredictUserActionsUITests.m; sourceTree = "<group>"; };
-		D0E3D0321BED661B007FDF76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E3D03E1BF14C87007FDF76 /* ActionNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionNameViewController.h; sourceTree = "<group>"; };
 		D0E3D03F1BF14C87007FDF76 /* ActionNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionNameViewController.m; sourceTree = "<group>"; };
 		D0E3D0411BF14E32007FDF76 /* ActionDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionDataViewController.h; sourceTree = "<group>"; };
@@ -105,8 +99,6 @@
 				D0E3D0461BF156B0007FDF76 /* CoreData.framework */,
 				D0E3D0441BF1569F007FDF76 /* CoreMotion.framework */,
 				D0E3D0071BED661A007FDF76 /* PredictUserActions */,
-				D0E3D0241BED661B007FDF76 /* PredictUserActionsTests */,
-				D0E3D02F1BED661B007FDF76 /* PredictUserActionsUITests */,
 				D0E3D0061BED661A007FDF76 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,24 +145,6 @@
 				D0E3D0091BED661A007FDF76 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D0E3D0241BED661B007FDF76 /* PredictUserActionsTests */ = {
-			isa = PBXGroup;
-			children = (
-				D0E3D0251BED661B007FDF76 /* PredictUserActionsTests.m */,
-				D0E3D0271BED661B007FDF76 /* Info.plist */,
-			);
-			path = PredictUserActionsTests;
-			sourceTree = "<group>";
-		};
-		D0E3D02F1BED661B007FDF76 /* PredictUserActionsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D0E3D0301BED661B007FDF76 /* PredictUserActionsUITests.m */,
-				D0E3D0321BED661B007FDF76 /* Info.plist */,
-			);
-			path = PredictUserActionsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E3D0261BED661B007FDF76 /* PredictUserActionsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E3D0311BED661B007FDF76 /* PredictUserActionsUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +500,7 @@
 				D0E3D0371BED661B007FDF76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0E3D0381BED661B007FDF76 /* Build configuration list for PBXNativeTarget "PredictUserActionsTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +509,7 @@
 				D0E3D03A1BED661B007FDF76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0E3D03B1BED661B007FDF76 /* Build configuration list for PBXNativeTarget "PredictUserActionsUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +518,7 @@
 				D0E3D03D1BED661B007FDF76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
