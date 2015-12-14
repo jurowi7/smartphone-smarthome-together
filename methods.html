@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Smartphone-smarthome-together by jurowi7</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Predict User Actions with Smartphone and Smarthome Data</h1>
+        <h2>Collecting data and predicting actions on iOS devices using k-nearest neighbor algorithm</h2>
+        <a href="https://github.com/jurowi7/smartphone-smarthome-together" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+
+        <h3>Collecting Training Data</h3>
+        <table>
+          <tr>
+            <td> 
+              <p>In smartphones the accelerometer and gyroscope allow you to capture the acceleration relative to the x-axis, y-axis, and z-axis as well as the angle of rotation around each axis. You can create training sets where you train the phone to identify motions such as sitting, walking, or laying down while the user has their smartphone in their pocket and record the movement data for comparison later.</p>
+
+              <p>In a smarthome environment you can collect data from motion sensors in each room to identify which room is being occupied. Energy use data from appliances can identify what the user is interacting with such as a microwave, washer, or TV.</p>
+
+              <p>By combining the data from these two you can potentially identify a user's actions and location within a smarthome environment. For example you could predict something such as a user standing in the kitchen using the microwave.</p>
+            </td>
+
+            <td>
+              <p><img src="images/screen3.jpg"></p>
+            </td>
+          </tr>
+        </table>
+
+        <h3>Analyzing Patterns</h3>
+        <p>Acceleration is measured by g-force such that a free falling object would have a g-force of zero. Yaw, pitch, and roll are represented as a degree of rotation. The charts below show the patterns of three different movements: sitting, standing and walking.</p>
+
+        <P>The charted data consists of 10 2-second recordings of those motions recorded at 10 times per second. Most movements could be recorded while the user is stationary, these examples were recorded while in motion which allows the system to predict a user's action as they are moving. The movement and position of the smartphone in the user's pocket are both noted at the top of each chart.</p>
+
+        <section id="chart-content">
+        
+        <table>
+          <tr>
+            <td>
+              <h3>Yaw, Pitch, and Roll</h3><br>
+            </td>
+            <td>
+              <h3>Acceleration</h3><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="images/sittingYPR1.png"><br>
+            </td>
+            <td>
+              <img src="images/sittingACC1.png"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="images/standingYPR1.png"><br>
+            </td>
+            <td>
+              <img src="images/standingACC1.png"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="images/walkingYPR.png"><br>
+            </td>
+            <td>
+              <img src="images/walkingACC.png"><br><br>
+            </td>
+          </tr>
+        </table>
+
+         <h3>Comparison</h3>
+        <p>The charts below compare data collected from the same user movements but with the phone positioned differently in the pants pocket. The ones on the left have the phone top down facing towards the user in the left pocket, the ones on the right in the same position except the phone is facing away from the user.</p>
+
+        <table>
+          <tr>
+            <td colpan=2>
+              <h3>Yaw, Pitch, and Roll</h3><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="images/sittingYPR1.png"><br>
+            </td>
+            <td>
+              <img src="images/sittingYPR2.png"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2>
+              <h3>Acceleration</h3><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="images/standingACC1.png"><br>
+            </td>
+            <td>
+              <img src="images/standingACC2.png"><br><br>
+            </td>
+          </tr>
+        </table>
+
+        <h3>K-Nearest Neighbor Algorithm</h3>
+          <p>Currently the program is set up to predict motion, the phone does not actively gather data from smarthome devices. When in the predict action mode, every movement has its data compared against the training sets mentioned earlier using the k-nearest neighbor algorithm. In this case I have it finding the 3 closest matches then choosing a predicted action by looking at which action is found the most in those matches.</p>
+
+          <p>You can adjust the number of k-nearest neighbor matches to search as well as the frequency of motion data being saved to get more accurate results (though potentially slower response because of increased data and processing).</p>
+        <br>
+
+  
+        <img src="images/knn.png">
+          </section>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/jurowi7/smartphone-smarthome-together/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/jurowi7/smartphone-smarthome-together/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <h3><u><a href="index.html">Summary</a></u></h3>
+          <h3><u><a href="results.html">Results</a></u></h3>
+
+          <p class="repo-owner"><a href="https://github.com/jurowi7/smartphone-smarthome-together"></a> Maintained by <a href="https://github.com/jurowi7">Justin Wilkinson</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>

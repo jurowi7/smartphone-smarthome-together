@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <script type="text/javascript" src="javascripts/main.js" ></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <title>Smartphone-smarthome-together by jurowi7</title>
   </head>
@@ -27,22 +29,18 @@
       <div class="inner clearfix">
         <section id="main-content">
 
-        
-        <table>
-        <tr>
-        <td>
-        <h3>Summary</h3>
-        <p>We know that smartphones can collect a lot of data, and smarthome technology is becoming more common. What if they could work together? Could they recognize patterns and predict actions?</p>
+        <h3>Results</h3>
+        <p>Running this program using the k-nearest neighbor algorithm made it possible to predict a user's actions with fairly accurate results.</p>
 
-        <p>In this project I collected movement data from an iPhone and looked at energy and motion data collected by smarthomes. I used this data to predict movement types, locations, and actions being performed by a user.
+        <p>Accuracy improves by adding more training data, increasing the number of k-nearest neighbor results to compare, and adding training data for multiple scenarios such as the person having the phone in their left or right pocket, face up or face down, etc.</p>
 
-        <p>This can be useful to monitor those that may need assistance. A caregiver could be given live data to monitor activities which in turn could help chart progress of patients, know their locations, and aid in preventing or identifying potential problems.</p>
-        </td>
-        <td>
-        	<p><img src="images/screen5.jpg"></p>
-        </td>
-        </tr>
-        </table>
+        <h3>Future Work</h3>
+        <p>By adding another smart wearable device such as a smartwatch you could gather even more data relating to someones health or actions. Many smartwatches now contain heart rate monitors and as more smart health monitors are created they could provide valuable information for tracking a user's health in addition to actions.</p>
+
+        <p>There's also a potential for using this to track children and their activities, though for practical use a different design of wearable technology may be needed since it is uncommon for infants and young children to have smartphones or smartwatches.</p>
+
+        <h3>Video Walkthrough</h3>
+        <p><video controls><source src="videos/Predicting Actions.mp4" type="video/mp4"></video></p>
 
         </section>
 
@@ -56,8 +54,8 @@
             .tar.gz file
           </a>
 
+          <h3><u><a href="index.html">Summary</a></u></h3>
           <h3><u><a href="methods.html">Methods</a></u></h3>
-          <h3><u><a href="results.html">Results</a></u></h3>
 
           <p class="repo-owner"><a href="https://github.com/jurowi7/smartphone-smarthome-together"></a> Maintained by <a href="https://github.com/jurowi7">Justin Wilkinson</a>.</p>
 
